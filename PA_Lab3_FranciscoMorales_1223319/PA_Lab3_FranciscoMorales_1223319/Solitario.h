@@ -7,8 +7,9 @@ class Solitario
 {
 public:
 	Mazo *mazo;
-	Pila *pilas[10];
+	Pila *pilas[9];
 	Solitario();
 	~Solitario();
+	Carta Solitario::Mover(Pila *inicio, Pila *fin);
 };
 

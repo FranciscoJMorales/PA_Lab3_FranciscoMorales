@@ -29,9 +29,9 @@ void Mazo::Revolver() {
 	for (int i = 0; i < 100; i++) {
 		Carta *ant = cartas[rng->Next(0, 52)];
 		Carta *sig = cartas[rng->Next(0, 52)];
-		Carta *aux = ant;
+		Carta aux = *ant;
 		*ant = *sig;
-		*sig = *aux;
+		*sig = aux;
 	}
 }
 

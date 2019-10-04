@@ -7,7 +7,11 @@ public:
 	Pila();
 	~Pila();
 	void Pila::Push(Carta *nuevo);
-	Carta *Pila::Pop();
+	Carta Pila::Pop();
+	Carta *Pila::UltimaCartaVolteada();
 	System::String^Pila::String();
+private:
+	Carta *Pila::UltimaCartaVolteadaRecursiva(Carta *pos);
+	System::String^Pila::StringRecursivo(Carta *pos);
 };
 
