@@ -555,10 +555,12 @@ namespace PA_Lab3_FranciscoMorales_1223319 {
 #pragma endregion
 
 		Solitario *juego;
+		bool nuevoJuego;
 
 	private: System::Void repartir_Btn_Click(System::Object^  sender, System::EventArgs^  e) {
 		juego = new Solitario();
 		MostrarCartas();
+		nuevoJuego = true;
 		moverBtn->Enabled = true;
 		bajarBtn->Enabled = true;
 	}
@@ -619,6 +621,13 @@ namespace PA_Lab3_FranciscoMorales_1223319 {
 		}
 		else {
 			MessageBox::Show("El movimiento no es válido", "Error");
+		}
+		if (juego->pilas[0]->head == nullptr) {
+			bajarBtn->Enabled = false;
+		}
+		if (pilaFinal->CantidadCartasVolteadas() >= 5 && nuevoJuego) {
+			nuevoJuego = false;
+			MessageBox::Show("¡Felicidades! Usted ha ganado", "Fin del juego");
 		}
 	}
 

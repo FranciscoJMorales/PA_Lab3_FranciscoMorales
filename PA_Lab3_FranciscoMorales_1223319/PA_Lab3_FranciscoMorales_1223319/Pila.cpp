@@ -30,6 +30,10 @@ Carta *Pila::UltimaCartaVolteada() {
 	return UltimaCartaVolteadaRecursiva(head);
 }
 
+int Pila::CantidadCartasVolteadas() {
+	return CantidadCartasVolteadasRecursiva(head);
+}
+
 System::String^Pila::String() {
 	return StringRecursivo(head);
 }
@@ -45,6 +49,20 @@ Carta *Pila::UltimaCartaVolteadaRecursiva(Carta *pos) {
 	}
 	else {
 		return pos;
+	}
+}
+
+int Pila::CantidadCartasVolteadasRecursiva(Carta *pos) {
+	if (pos->sig != nullptr) {
+		if (pos->sig->volteado) {
+			return CantidadCartasVolteadasRecursiva(pos->sig) + 1;
+		}
+		else {
+			return 1;
+		}
+	}
+	else {
+		return 1;
 	}
 }
 

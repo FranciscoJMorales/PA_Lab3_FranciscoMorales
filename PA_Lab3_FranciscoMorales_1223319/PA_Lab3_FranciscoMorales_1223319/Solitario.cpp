@@ -31,11 +31,32 @@ Carta Solitario::Mover(Pila *inicio, Pila *fin) {
 	if (fin->head != nullptr) {
 		if (nuevo->numero == fin->head->numero - 1 && nuevo->color != fin->head->color) {
 			while (inicio->head != nuevo) {
-				pilas[8]->Push(&inicio->Pop());
+				if (pilas[8]->head != nullptr) {
+					Carta aux = *pilas[8]->head;
+					Carta tempo = inicio->Pop();
+					pilas[8]->head = new Carta((&aux)->numero, (&aux)->color, (&aux)->volteado, (&aux)->sig);
+					pilas[8]->Push(&tempo);
+				}
+				else {
+					Carta tempo = inicio->Pop();
+					pilas[8]->Push(&tempo);
+				}
 			}
-			pilas[8]->Push(&inicio->Pop());
+			if (pilas[8]->head != nullptr) {
+				Carta aux = *pilas[8]->head;
+				Carta tempo = inicio->Pop();
+				pilas[8]->head = new Carta((&aux)->numero, (&aux)->color, (&aux)->volteado, (&aux)->sig);
+				pilas[8]->Push(&tempo);
+			}
+			else {
+				Carta tempo = inicio->Pop();
+				pilas[8]->Push(&tempo);
+			}
 			while (pilas[8]->head != nullptr) {
-				fin->Push(&pilas[8]->Pop());
+				Carta aux = *fin->head;
+				Carta tempo = pilas[8]->Pop();
+				fin->head = new Carta((&aux)->numero, (&aux)->color, (&aux)->volteado, (&aux)->sig);
+				fin->Push(&tempo);
 			}
 		}
 		else {
